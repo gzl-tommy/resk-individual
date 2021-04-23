@@ -6,7 +6,7 @@ import (
 	"github.com/tietang/props/v3/consul"
 	"github.com/tietang/props/v3/ini"
 	"github.com/tietang/props/v3/kvs"
-	_ "gzl-tommy/resk-individual"
+	_ "gzl-tommy/resk-individual" // 这里导入 module 自己（即 module 的当前目录），相当于导入了该 module 的直接目录下存在包，这里是 app.go 所在的 resk 包
 	"gzl-tommy/resk-individual/infra"
 	"gzl-tommy/resk-individual/infra/base"
 	"net/http"
