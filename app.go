@@ -1,4 +1,4 @@
-package resk
+package resk_individual
 
 import (
 	"gzl-tommy/resk-individual/apis/gorpc"
