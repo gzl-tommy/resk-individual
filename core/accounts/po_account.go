@@ -16,7 +16,7 @@ import (
 // 6.使用omitempty 的tag值来标识字段更新和写入时会被忽略
 // 7.使用- 中划线的tag值来标识字段在更新，写入、查询时会被忽略
 
-// 账户持久化对象
+// 账户持久化对象（Persistence Objects）
 type Account struct {
 	Id           int64           `db:"id,omitempty"`         // 账户Id
 	AccountNo    string          `db:"account_no,uni"`       // 账户编号，账户唯一标识

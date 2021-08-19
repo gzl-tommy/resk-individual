@@ -27,6 +27,7 @@ func (r *RefundExpiredJobStarter) Init(ctx infra.StarterContext) {
 	timeout := ctx.Props().GetDurationDefault("redis.timeout", 20*time.Second)
 	addr := ctx.Props().GetDefault("redis.addr", "127.0.0.1:6379")
 
+	// 构建一个 redigo 连接池对象
 	pools := make([]redsync.Pool, 0, 1)
 	pool := &redis.Pool{
 		//TestOnBorrow:    nil,
@@ -40,11 +41,15 @@ func (r *RefundExpiredJobStarter) Init(ctx infra.StarterContext) {
 		},
 	}
 	pools = append(pools, pool)
+	
+	// 创建一个 redsync 实例
 	rsync := redsync.New(pools)
 	ip, err := utils.GetExternalIP()
 	if err != nil {
 		ip = "127.0.0.1"
 	}
+	
+	// 通过 redsync 实例创建 mutex 互斥锁实例
 	r.mutex = rsync.NewMutex(
 		"lock:RefundExpired",
 		redsync.SetExpiry(50*time.Second),

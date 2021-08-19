@@ -8,7 +8,6 @@ import (
 
 // 应用程序的启动管理器
 type BootApplication struct {
-	IsTest     bool
 	conf       kvs.ConfigSource
 	starterCtx StarterContext
 }

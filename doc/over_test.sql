@@ -33,3 +33,4 @@ CREATE TABLE `goods_unsigned`
   DEFAULT CHARSET = utf8
   ROW_FORMAT = DYNAMIC;
 
+
